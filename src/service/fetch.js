@@ -5,7 +5,7 @@ import axios from 'axios'
 import qs from 'qs'
 import { Toast, Indicator } from 'mint-ui'
 import { isBindWechat, pathname } from './config'
-import { getStore } from '../plugins/utils'
+import { getStore, getWXUrl } from '../plugins/utils'
 
 let timeLimit = true
 axios.defaults.baseURL = ''
@@ -38,11 +38,11 @@ function checkStatus (response) {
       //用户掉线
       if (response.data.Type == 401) {
         timeLimit = false
-        var currentUrl = getStore('currentUrl')
+        var currentUrl = window.localStorage.getItem('currentUrl')
         window.sessionStorage.removeItem('ASPXAUTH')
         if (getStore('userAgent').weixin && isBindWechat) {
           Toast({ message: '账号掉线，请重新登录', position: 'bottom' })
-          window.location.href = getStore('wxLoginUrl')
+          window.location.href = getWXUrl('#/login')
         } else {
           Toast({ message: '账号掉线，请重新登录', position: 'bottom' })
           var loginUrl = (pathname ? `${pathname}#/login?currentUrl=` : '/#/login?currentUrl=') + encodeURIComponent(currentUrl)
@@ -60,7 +60,7 @@ function checkStatus (response) {
     //存储aspxauth身份验证
     let aspxauth = response.headers.aspxauth || response.headers.ASPXAUTH
     if (aspxauth) {
-      window.localStorage.setItem('ASPXAUTH', aspxauth)
+      window.sessionStorage.setItem('ASPXAUTH', aspxauth)
     }
     // 如果不需要除了data之外的数据，可以直接 return response.data
     return response.data
