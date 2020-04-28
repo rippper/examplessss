@@ -38,7 +38,7 @@ function checkStatus (response) {
       //用户掉线
       if (response.data.Type == 401) {
         timeLimit = false
-        var currentUrl = window.localStorage.getItem('currentUrl')
+        let currentUrl = window.localStorage.getItem('currentUrl')
         window.sessionStorage.removeItem('ASPXAUTH')
         if (getStore('userAgent').weixin && isBindWechat) {
           Toast({ message: '账号掉线，请重新登录', position: 'bottom' })

@@ -40,7 +40,7 @@
   import { mapState, mapActions } from 'vuex'
   import { MessageBox, Toast, Indicator, Button, Radio } from 'mint-ui'
   import { Login, Login2 } from '../service/getData'
-  import { getStore, setStore } from '../plugins/utils'
+  import { getStore, setStore, setSession, getQueryString } from '../plugins/utils'
   import { isBindWechat } from '../service/config'
 
   Vue.component(Button.name, Button)
@@ -76,8 +76,10 @@
       }
     },
     created () {
-      this.Code = this.$route.query.code
-      this.getUserAgent()
+      let code = getQueryString().code
+      if (code) {
+        this.Code = code.split('#/')[0]
+      }
     },
     mounted () {
       let backUrl = this.$route.query.currentUrl
@@ -123,6 +125,7 @@
             this.encrypt('p_app', '')
             setStore('remember', false)
           }
+          setSession('userInfo', res.Data)
           /*判断 weixin,mobile*/
           if (this.userAgent.weixin && isBindWechat) {
             window.location.href = this.wxIndexUrl

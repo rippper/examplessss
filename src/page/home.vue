@@ -143,45 +143,18 @@
       headerFix,
       mbModel
     },
-    created () {
-      this.getUserAgent()
-    },
     mounted () {
       this.code = getQueryString('code')
       this.getRecommendCourse()
       this.getSwipeData()
-      let ASPXAUTH = window.localStorage.getItem('ASPXAUTH')
-      if (this.userAgent.weixin && isBindWechat) {
-        if (ASPXAUTH) {
-          this.getUserInformation()
-        } else {
-          /*自动登录*/
-          this.login()
-        }
-      } else {
-        this.getUserInformation()
-      }
     },
     computed: {
-      ...mapState(['userAgent', 'wxLoginUrl', 'wxIndexUrl', 'userInfo']),
+      ...mapState(['userAgent', 'userInfo']),
       bannerLink () {
         return `http://www.51fenmiao.cn/wechat/#/bindMobile?platformAccount=${this.userInfo.UserAccount}&platformNumber=769`
       }
     },
     methods: {
-      ...mapActions(['getUserAgent', 'getUserInformation']),
-      async login () {
-        let res = await Login({ Code: this.code })
-        if (res.Type == 1) {
-          /*登录成功*/
-          this.getUserInformation()
-        } else {
-          MessageBox('警告', res.Message)
-            .then(() => {
-              window.location.href = this.wxLoginUrl
-            })
-        }
-      },
       /*推荐课程*/
       async getRecommendCourse () {
         let data = await GetCourseInfoList()
