@@ -297,6 +297,9 @@ export const getQueryString = (name) => {
     queryObj[p1] = p2
     return p
   })
+  if (!name) {
+    return queryObj || {}
+  }
   return queryObj[name] || null
 }
 
