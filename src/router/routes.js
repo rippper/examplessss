@@ -19,7 +19,14 @@ export default [
     name: 'home',
     path: '/home',
     component: () => import(/* webpackChunkName: "home" */'../page/home.vue'),
-    meta: { title: '首页' }
+    meta: { title: '首页', isSkip: true }
+  },
+  // 新首页
+  {
+    name: 'Homes',
+    path: '/Homes',
+    component: () => import('../page/Homes.vue'),
+    meta: { title: '首页', isSkip: true }
   },
   // 课程中心
   {

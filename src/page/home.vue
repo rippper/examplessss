@@ -114,14 +114,13 @@
 </template>
 <script>
   import Vue from 'vue'
-  import { mapState, mapActions } from 'vuex'
+  import { mapState } from 'vuex'
   import { MessageBox, Swipe, SwipeItem } from 'mint-ui'
   import { headerFix, errorImg, footerFix, mbModel } from '../components'
-  import { GetLink, GetCourseDetail, Login, GetCourseInfoList } from '../service/getData'
+  import { GetLink, GetCourseDetail, GetCourseInfoList } from '../service/getData'
   import { toPlay } from '../service/mixins'
   import noCourse from '../assets/noCourse.png'
   import { getQueryString } from '../plugins/utils'
-  import { isBindWechat } from '../service/config'
 
   Vue.component(Swipe.name, Swipe)
   Vue.component(SwipeItem.name, SwipeItem)

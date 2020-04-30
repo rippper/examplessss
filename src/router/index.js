@@ -5,6 +5,7 @@ import store from '../store'
 import { setStore, userAgent, changeTitle, getSession, setSession, getWXUrl, getQueryString } from '../plugins/utils'
 import { isBindWechat } from '../service/config'
 import { Login } from '../service/getData'
+import { Toast } from 'mint-ui'
 
 Vue.use(VueRouter)
 
