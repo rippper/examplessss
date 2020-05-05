@@ -20,51 +20,45 @@
                 </ul>
             </div>
         </div>
-        <div class="h_top_banner">
-            <div>
-                <swiper :options="swiperOption">
-                    <swiper-slide>
-                        <div class="content">
-                            <img src="../assets/example/example001.jpg" alt>
-                        </div>
-                    </swiper-slide>
-                    <swiper-slide>
-                        <div class="content">
-                            <img src="../assets/example/example002.jpg" alt>
-                        </div>
-                    </swiper-slide>
-                    <swiper-slide>
-                        <div class="content">
-                            <img src="../assets/example/example003.jpg" alt>
-                        </div>
-                    </swiper-slide>
-                    <swiper-slide>
-                        <div class="content">
-                            <img src="../assets/example/example004.jpg" alt>
-                        </div>
-                    </swiper-slide>
-                    <swiper-slide>
-                        <div class="content">
-                            <img src="../assets/example/example005.jpg" alt>
-                        </div>
-                    </swiper-slide>
-                </swiper>
-            </div>
-        </div>
+        <index3DBanner :topBanner="topBanner"></index3DBanner>
     </div>
 </template>
 
 <script>
+import { index3DBanner } from '../components'
+
 export default {
     name: 'Home',
     data () {
         return {
             emailNum: '10', // 顶部邮箱消息数
-            swiperOption: {
-                slidesPerView: 1,
-                spaceBetween: 20,
-                loop: true
-            }
+            topBanner: [
+                {
+                    Img: require('../assets/example/example001.jpg'),
+                    Title: '学习进行时：在习近平新时代中国特色社会主义...',
+                    Date: '2020-04-29'
+                },
+                {
+                    Img: require('../assets/example/example002.jpg'),
+                    Title: '学习进行时：在习近平新时代中国特色社会主义...',
+                    Date: '2020-04-29'
+                },
+                {
+                    Img: require('../assets/example/example003.jpg'),
+                    Title: '学习进行时：在习近平新时代中国特色社会主义...',
+                    Date: '2020-04-29'
+                },
+                {
+                    Img: require('../assets/example/example004.jpg'),
+                    Title: '学习进行时：在习近平新时代中国特色社会主义...',
+                    Date: '2020-04-29'
+                },
+                {
+                    Img: require('../assets/example/example005.jpg'),
+                    Title: '学习进行时：在习近平新时代中国特色社会主义...',
+                    Date: '2020-04-29'
+                }
+            ]
         }
     },
     mounted () {
@@ -72,6 +66,9 @@ export default {
     },
     methods: {
 
+    },
+    components: {
+        index3DBanner
     }
 }
 </script>
@@ -134,22 +131,6 @@ export default {
                     }
                 }
             }
-        }
-    }
-    .h_top_banner{
-        width:100%;
-        height: toRem(526px);
-        padding-top: toRem(21px);
-        .swiper-slide{
-            width: toRem(690px)!important;
-        }
-        .content{
-            width: toRem(690px);
-            height: toRem(350px);
-        }
-        img{
-            width: toRem(690px);
-            height: toRem(350px);
         }
     }
 }
