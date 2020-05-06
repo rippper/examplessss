@@ -43,10 +43,32 @@ export default {
                 spaceBetween: 5,
                 centeredSlides: 'true',
                 loop: 'true',
+                loopAdditionalSlides: 2,
                 on: {
                     slideChangeTransitionStart: function () {
                         // console.log(t.slideIndex)
+                        let items = document.querySelectorAll('.content')
+                        console.log(items[this.activeIndex])
                         that.slideIndex = this.activeIndex
+                        if (this.activeIndex == 4) {
+                            for (let i = 0; i < items.length; i++) {
+                                items[i].getElementsByTagName('img')[0].className = ''
+                            }
+                            items[9].getElementsByTagName('img')[0].className = 'beSelecting'
+                            items[4].getElementsByTagName('img')[0].className = 'beSelecting'
+                        } else if (this.activeIndex == 10) {
+                            for (let i = 0; i < items.length; i++) {
+                                items[i].getElementsByTagName('img')[0].className = ''
+                            }
+                            items[5].getElementsByTagName('img')[0].className = 'beSelecting'
+                            items[10].getElementsByTagName('img')[0].className = 'beSelecting'
+                        } else {
+                            for (let i = 0; i < items.length; i++) {
+                                items[i].getElementsByTagName('img')[0].className = ''
+                            }
+                            items[this.activeIndex].getElementsByTagName('img')[0].className = 'beSelecting'
+                        }
+                        // items[this.activeIndex].getElementsByTagName('img')[0].className = 'beSelecting'
                         // if (that.slideIndex == 1) {
                         //     that.$refs.bannerImg[that.topBanner.length - 1].className = 'beSelectbefore'
                         // } else if (that.slideIndex == that.topBanner.length) {
@@ -91,15 +113,15 @@ export default {
                 position: relative;
                 top: 0;
                 width: toRem(690px);
-                height: toRem(350px);
+                height: toRem(280px);
                 border-radius: toRem(15px);
-                transition: 0.5s;
+                transition: 0.2s;
             }
-            .beSelect{
+            .beSelecting{
                 width: toRem(690px);
                 height: toRem(350px);
                 transform: translateX(toRem(0));
-                transition: 0.3s;
+                transition: 0.2s;
             }
             .beSelectbefore{
                 transform: translateX(toRem(148px));
