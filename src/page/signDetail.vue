@@ -14,7 +14,7 @@
   import { goBack } from '../service/mixins'
   import { signList, headerFix } from '../components'
   import { GetClassUserSignList } from '../service/getData'
-      //hahaha
+      //hahahahassss
   export default {
     mixins: [goBack],
     data () {

@@ -19,8 +19,8 @@
     name: 'header-fix',
     props: {
       title: String,
-      fixed: Boolean
-    }
+      fixed: Boolean // example
+   }
   }
 </script>
 
