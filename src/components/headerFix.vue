@@ -19,7 +19,7 @@
     name: 'header-fix',
     props: {
       title: String,
-      fixed: Boolean // 吼吼吼我又做了些小小的测试和改动
+      fixed: Boolean // 吼吼吼，另一种改变
    }
   }
 </script>
